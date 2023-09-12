@@ -58,8 +58,8 @@ public class Bst{
         if (root == null) {
             return;
         }
-        preOrder(root.left);
-        preOrder(root.right);
+        postOrder(root.left);
+        postOrder(root.right);
         System.out.print(root.value + "->");
     }
 
@@ -90,10 +90,10 @@ public class Bst{
         }
 
         // print BST
-        // inOrder(root);
-        // System.out.println("null");     // 1-> 2-> 4-> 5-> 6-> 8-> null
+        postOrder(root);
+        System.out.println("null");     // 1-> 2-> 4-> 5-> 6-> 8-> null
 
-        System.out.println(searchKeyInBST(root, 16));
+        //System.out.println(searchKeyInBST(root, 16));
 
     }
 }
