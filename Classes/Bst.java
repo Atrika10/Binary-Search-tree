@@ -47,11 +47,21 @@ public class Bst{
         if (root == null) {
             return;
         }
-        System.out.println(root.value);
+        System.out.print(root.value + "->");
         preOrder(root.left);
         preOrder(root.right);
     }
-    
+
+    // Time Comp. => O(n)
+    public static void postOrder(Node root){
+         // base case
+        if (root == null) {
+            return;
+        }
+        preOrder(root.left);
+        preOrder(root.right);
+        System.out.print(root.value + "->");
+    }
 
     // Search a key in BST
     // if it exist return true else return false
