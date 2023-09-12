@@ -41,6 +41,18 @@ public class Bst{
         inOrder(root.right);
     }
 
+    // Time Comp. => O(n)
+    public static void preOrder(Node root){
+        // base case
+        if (root == null) {
+            return;
+        }
+        System.out.println(root.value);
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+    
+
     // Search a key in BST
     // if it exist return true else return false
     // Time complexity will be O(H) where H is the height of the Binary Search Tree
