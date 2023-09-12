@@ -41,6 +41,24 @@ public class Bst{
         inOrder(root.right);
     }
 
+    // Search a key in BST
+    // if it exist return true else return false
+    // Time complexity will be O(H) where H is the height of the Binary Search Tree
+    public static boolean searchKeyInBST(Node root, int key){
+        // base case
+        if (root == null) {
+            return false;       // in any case if I found root = null means I've searched all node & didn't get my key
+        }
+        if (root.value == key) {
+            return true;
+        }else if(key > root.value){
+            // I'll return what my right subtree return to me 
+            return searchKeyInBST(root.right, key);
+        }else{
+            return searchKeyInBST(root.left, key);  // if my key is less that root.value
+        }
+    }
+
     public static void main(String args[]){
         int values[] = {5,4,6,1,2,8};
         Node root = null;
@@ -50,7 +68,10 @@ public class Bst{
         }
 
         // print BST
-        inOrder(root);
-        System.out.println("null");     // 1-> 2-> 4-> 5-> 6-> 8-> null
+        // inOrder(root);
+        // System.out.println("null");     // 1-> 2-> 4-> 5-> 6-> 8-> null
+
+        System.out.println(searchKeyInBST(root, 16));
+
     }
 }
