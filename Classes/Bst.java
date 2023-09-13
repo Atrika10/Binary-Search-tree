@@ -128,6 +128,24 @@ public class Bst {
         return root;
     }
 
+    // TC => O(n), where n is the number of node of BST
+
+    public static void printInRange(Node root, int k1, int k2){
+        // base case
+        if (root == null) {
+            return;
+        }
+        if(root.value >= k1 && root.value <= k2){   // we will print in inorder fashion
+            printInRange(root.left, k1, k2);
+            System.out.print(root.value +" ");
+            printInRange(root.right, k1, k2);
+        }else if(root.value < k1){                  // if the value of root is less that k1, we'll call right subtree
+            printInRange(root.right, k1, k2);
+        }else{                                      // else we'll call left subtree
+            printInRange(root.left, k1, k2);
+        }
+    }
+
     public static void main(String args[]) {
         int values[] = { 5, 4, 6, 1, 2, 8 };
         Node root = null;
@@ -139,9 +157,6 @@ public class Bst {
         // print BST
         inOrder(root);
         System.out.println("null");
-        deleteNode(root, 5);
-        // print BST
-        inOrder(root);
-        System.out.println("null");
+        printInRange(root, 1, 5);
     }
 }
