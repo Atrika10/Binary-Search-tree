@@ -173,8 +173,26 @@ public class Bst {
 
     }
 
+    // Check is given BST is valid or not
+    public static boolean isBSTValid(Node root, Node min, Node max){
+        // base case
+        if (root == null) {
+            return true;
+        }
+        // for left subtree
+        if (max != null && root.value >= max.value) {
+            return false;
+        }
+        // for right subtree
+        else if (min != null && root.value <= min.value) {
+            return false;
+        }
+        return isBSTValid(root.left, min,root) 
+                && isBSTValid(root.right, root, max);
+    }
+
     public static void main(String args[]) {
-        int values[] = { 8, 5, 3, 6, 10,11,14};
+        int values[] = { 1,1,1};
         Node root = null;
 
         for (int i = 0; i < values.length; i++) {
@@ -185,6 +203,7 @@ public class Bst {
         // inOrder(root);
         // System.out.println("null");
         // printInRange(root, 1, 5);
-        printRoot2Leaf(root, new ArrayList<>());
+        //printRoot2Leaf(root, new ArrayList<>());
+        System.out.println(isBSTValid(root, null, null));
     }
 }
