@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Bst {
     public static class Node {
         int value;
@@ -146,8 +148,33 @@ public class Bst {
         }
     }
 
+    // function to print all path
+    public static void printPath(ArrayList<Integer> path){
+        for (int i = 0; i < path.size(); i++) {
+            System.out.print(path.get(i) +"-> ");
+        }
+        System.out.println("null");
+    }
+
+    // Print All possible path from root to leaf
+    public static void printRoot2Leaf(Node root, ArrayList<Integer> path){
+        // base case
+        if (root == null) {
+            return;
+        }
+        path.add(root.value);
+        // Am i Standing in the laef node? if yes then print path
+        if (root.left == null && root.right == null) {
+            printPath(path);
+        }
+        printRoot2Leaf(root.left, path);
+        printRoot2Leaf(root.right, path);
+        path.remove(path.size()-1); // remove last element when it's completed it's left & right subtree
+
+    }
+
     public static void main(String args[]) {
-        int values[] = { 5, 4, 6, 1, 2, 8 };
+        int values[] = { 8, 5, 3, 6, 10,11,14};
         Node root = null;
 
         for (int i = 0; i < values.length; i++) {
@@ -155,8 +182,9 @@ public class Bst {
         }
 
         // print BST
-        inOrder(root);
-        System.out.println("null");
-        printInRange(root, 1, 5);
+        // inOrder(root);
+        // System.out.println("null");
+        // printInRange(root, 1, 5);
+        printRoot2Leaf(root, new ArrayList<>());
     }
 }
