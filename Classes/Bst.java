@@ -246,6 +246,18 @@ public class Bst {
             root.right = temp;
         }
     }
+
+    public static Node mirrorBSTFunction(Node root){
+        // base case
+        if(root == null){
+            return null;
+        }
+        Node lefts = mirrorBSTFunction(root.left);
+        Node rights = mirrorBSTFunction(root.right);
+        root.left = rights;
+        root.right = lefts;
+        return root;
+    }
     public static void main(String args[]) {
         int values[] = { 3, 5, 6, 8, 10, 11};
         Node root = null;
