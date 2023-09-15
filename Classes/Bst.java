@@ -258,8 +258,23 @@ public class Bst {
         root.right = lefts;
         return root;
     }
+
+    // Time Complexity of this code is  => O(n), where n is the size of the given array
+    // Given a sorted array, task is to create a balanced bst (Min possible height)
+    public static Node createBalanceBST(int arr[], int st, int end){
+        // base case
+        if (st > end) {
+            return null;
+        }
+        // find mid 
+        int mid = (st + end)/2;
+        Node root = new Node(arr[mid]);     // make mid as root
+        root.left = createBalanceBST(arr, st, mid-1);   // creating left subtree
+        root.right = createBalanceBST(arr, mid+1, end); // creating right subtree
+        return root;                                    // finally returning root
+    }
     public static void main(String args[]) {
-        int values[] = { 3, 5, 6, 8, 10, 11};
+        int values[] = { 3, 5, 6, 8, 10, 11,12};
         Node root = null;
 
         for (int i = 0; i < values.length; i++) {
@@ -267,8 +282,7 @@ public class Bst {
         }
         inOrder(root);
         System.out.println();
-        mirrorBST(root);
-        inOrder(root);
+        System.out.println(createBalanceBST(values, 0, values.length-1).value);
         
     }
 }
