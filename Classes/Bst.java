@@ -217,14 +217,46 @@ public class Bst {
     //     }
     // }
 
+
+    public static void mirrorBST(Node root){
+        // base case
+        if (root == null) {
+            return;
+        }
+        mirrorBST(root.left);
+        mirrorBST(root.right);
+
+        // case 1   no child
+        if (root.left == null && root.right == null) {
+            return;
+        }
+        // case 2   one child
+        else if (root.left == null && root.right != null) {
+            root.left = root.right;
+            root.right = null;
+        }
+        else if(root.left != null && root.right == null){
+            root.right = root.left;
+            root.left = null;
+        }
+        // case 3 both child
+        else {
+            Node temp = root.left;
+            root.left = root.right;
+            root.right = temp;
+        }
+    }
     public static void main(String args[]) {
-        int values[] = { 1,2,3};
+        int values[] = { 3, 5, 6, 8, 10, 11};
         Node root = null;
 
         for (int i = 0; i < values.length; i++) {
             root = insert(root, values[i]);
         }
-
+        inOrder(root);
+        System.out.println();
+        mirrorBST(root);
+        inOrder(root);
         
     }
 }
