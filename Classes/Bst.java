@@ -191,19 +191,40 @@ public class Bst {
                 && isBSTValid(root.right, root, max);
     }
 
+    // public static int checkBST(Node root, Node prev){
+    //     if(root == null){
+    //         return 1;
+    //     }
+    //     int left = checkBST(root.left, prev);
+    //     if(prev != null && root.value <= prev.value){
+    //         return 0;   // false
+    //     }
+    //     // update prev
+    //     prev = root;
+    //     int right = checkBST(root.right, prev);
+    //     return (left == 1 && right == 1) ? 1 :0;
+    // }
+    // //Function to check whether a Binary Tree is BST or not.
+    // public static boolean isBST(Node root)
+    // {
+    //     // code here.
+    //     Node prev = null; 
+    //     int ans = checkBST(root, prev);
+    //     if (ans == 1) {
+    //         return true;
+    //     }else{
+    //         return false;
+    //     }
+    // }
+
     public static void main(String args[]) {
-        int values[] = { 1,1,1};
+        int values[] = { 1,2,3};
         Node root = null;
 
         for (int i = 0; i < values.length; i++) {
             root = insert(root, values[i]);
         }
 
-        // print BST
-        // inOrder(root);
-        // System.out.println("null");
-        // printInRange(root, 1, 5);
-        //printRoot2Leaf(root, new ArrayList<>());
-        System.out.println(isBSTValid(root, null, null));
+        
     }
 }
