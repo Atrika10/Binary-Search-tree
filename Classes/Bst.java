@@ -273,8 +273,12 @@ public class Bst {
         root.right = createBalanceBST(arr, mid+1, end); // creating right subtree
         return root;                                    // finally returning root
     }
+    public static Node sortedArrayToBST(int[] nums) {
+        return createBalanceBST(nums, 0, nums.length-1);
+    }
     public static void main(String args[]) {
-        int values[] = { 3, 5, 6, 8, 10, 11,12};
+        //int values[] = { 3, 5, 6, 8, 10, 11,12};
+        int values[] = { -10,-3,0,5,9};
         Node root = null;
 
         for (int i = 0; i < values.length; i++) {
@@ -282,7 +286,7 @@ public class Bst {
         }
         inOrder(root);
         System.out.println();
-        System.out.println(createBalanceBST(values, 0, values.length-1).value);
-        
+        System.out.println(sortedArrayToBST(values).value);
+        inOrder(root);
     }
 }
